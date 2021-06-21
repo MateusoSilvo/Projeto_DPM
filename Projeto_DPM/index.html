@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculando alturas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  </head>
+
+  <style media="screen">
+
+  .exibicao{
+    width: 420px;
+    height: 400px;
+    margin-left: 2%;
+    margin-top: 5%;
+    border: 2px black solid;
+  }
+
+  #titulo{
+    align-content: center;
+    margin-left: 17%;
+  }
+
+  #altura1{
+    margin-top: 30px;
+    margin-left: 3%;
+    width: 100px;
+    display: inline-block;
+  }
+
+  #altura2{
+    margin-top: 10px;
+    margin-left: 3%;
+    width: 100px;
+    display: inline-block;
+  }
+
+  #valor1{
+    margin-left: 110px;
+    margin-top: -33px;
+    display: inline-block;
+  }
+
+  #valor2{
+    margin-left: 110px;
+    margin-top: -33px;
+    display: inline-block;
+  }
+
+  #result{
+    margin-left: 130px;
+    margin-top: -32px;
+    display: inline-block;
+  }
+
+  #resultado{
+    margin-top: 50px;
+    display: inline-block;
+  }
+
+  </style>
+
+  <body>
+
+    <div class="container">
+    <div class="row d-xs-block d-sm-none">
+
+      <div class="exibicao">
+
+      <h1 id="titulo">Cálculo de alturas</h1>
+
+      <hr style="color: black;">
+
+    <button type="button" id="altura1" class="btn btn-outline-primary" onclick="funcAlt()">Altitude 1</button>
+    <label for="valor1" id="valor1"></label>
+    <br>
+    <br>
+
+    <button type="button" id="altura2" class="btn btn-outline-success" onclick="funcAlt2()">Altitude 2</button>
+    <label for="valor2" id="valor2"></label>
+    <br>
+    <br>
+
+    <h2 id="resultado">Resultado:</h2>
+    <label for="result" id="result"></label>
+
+</div>
+  </div>
+</div>
+
+  </body>
+
+
+  <script type="text/javascript">
+
+      function funcAlt() {
+        var valor1 = document.querySelector('#valor1');
+        valor1.innerHTML ='Carregando...'
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((posicao)=>{
+            alt1 = posicao.coords.altitude;
+            valor1.innerHTML = `${alt1}`;
+          });
+
+        }
+
+      }
+
+      function funcAlt2() {
+        var valor2 = document.querySelector('#valor2');
+        valor2.innerHTML ='Carregando...'
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((posicao)=>{
+            var alt2 = posicao.coords.altitude;
+            valor2.innerHTML = `${alt2}`;
+
+            result = document.querySelector('#result');
+            result.innerHTML = alt1 - alt2
+
+          });
+
+        }
+
+      }
+
+
+
+
+
+    </script>
+
+</html>
